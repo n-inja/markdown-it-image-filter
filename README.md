@@ -1,4 +1,4 @@
-# markdown-it-image-filter 
+# markdown-it-image-filter [![Build Status](https://travis-ci.org/n-inja/markdown-it-image-filter.svg?branch=master)](https://travis-ci.org/n-inja/markdown-it-image-filter)
 filter image rule by domain
 
 ## Usage
