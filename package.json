@@ -1,0 +1,29 @@
+{
+  "name": "markdown-it-image-filter",
+  "version": "1.0.0",
+  "description": "filter image rule by domain",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "markdown-it": "^9.0.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n-inja/markdown-it-image-filter.git"
+  },
+  "keywords": [
+    "markdown-it-plugin"
+  ],
+  "author": "Mikito Ota <mccreepertakumi@gmail.com> (https://n-inja.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n-inja/markdown-it-image-filter/issues"
+  },
+  "homepage": "https://github.com/n-inja/markdown-it-image-filter#readme"
+}
