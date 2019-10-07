@@ -19,18 +19,17 @@ const isSpace = code => {
 }
 
 const domainReg = /(?:^[^:]*:\/\/)?([^:\/.]+(?:\.[^:\/.]+)*)\/?.*$/
-const domainRegSecure = /(?:https:\/\/)([^:\/.]+(?:\.[^:\/.]+)*)\/?.*$/
+const domainRegSecure = /^https:\/\/([^:\/.]+(?:\.[^:\/.]+)*)\/?.*$/
 
 function filter(whitelist, option) {
-  if (!option) option = {}
   const httpsOnly = option['httpsOnly']
-
   const reg = httpsOnly ? domainRegSecure : domainReg
   const permitted = href => {
-    const domain = reg.exec(href)[1]
-    if (!domain) {
+    const checked = reg.exec(href)
+    if (!checked || !checked[1]) {
       return false
     }
+    const domain = checked[1]
     return whitelist.includes(domain)
   }
 
@@ -131,13 +130,13 @@ function filter(whitelist, option) {
   }
 }
 
-module.exports = function(whitelist) {
+module.exports = function(whitelist, option) {
   return function(md) {
     const rule = md.inline.ruler.__rules__.find(r => r.name === 'image')
     if (!rule) {
       throw new Error('not found image rule')
     }
     defaultParser = rule.fn
-    rule.fn = filter(whitelist)
+    rule.fn = filter(whitelist, option || {})
   }
 }
