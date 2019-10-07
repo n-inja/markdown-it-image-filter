@@ -19,10 +19,15 @@ const isSpace = code => {
 }
 
 const domainReg = /(?:^[^:]*:\/\/)?([^:\/.]+(?:\.[^:\/.]+)*)\/?.*$/
+const domainRegSecure = /(?:https:\/\/)([^:\/.]+(?:\.[^:\/.]+)*)\/?.*$/
 
-function filter(whitelist) {
+function filter(whitelist, option) {
+  if (!option) option = {}
+  const httpsOnly = option['httpsOnly']
+
+  const reg = httpsOnly ? domainRegSecure : domainReg
   const permitted = href => {
-    const domain = domainReg.exec(href)[1]
+    const domain = reg.exec(href)[1]
     if (!domain) {
       return false
     }
