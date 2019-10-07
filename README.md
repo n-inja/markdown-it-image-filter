@@ -16,3 +16,16 @@ md.render('![](https://ng.example.com/image.png)')
 // '!<a href="https://ng.example.com/image.png"></a>'
 ```
 
+## option
+
+```
+const md = require('markdown-it')
+const filter = require('markdown-it-image-filter')
+
+md.use(filter(['ok.example.com'], {
+  // httpsOnly option
+  // default false
+  // href must start with "https://"
+  httpsOnly: true
+}))
+```
